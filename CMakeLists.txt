@@ -1,4 +1,8 @@
 cmake_minimum_required(VERSION 3.1)
+
+file(DOWNLOAD "https://raw.githubusercontent.com/nlohmann/json/master/single_include/nlohmann/json.hpp" "${CMAKE_CURRENT_SOURCE_DIR}/deps/json/json.hpp"
+ INACTIVITY_TIMEOUT 5000 TLS_VERIFY OFF SHOW_PROGRESS)
+
 set(CMAKE_CONFIGURATION_TYPES Debug Release)
 set(DEPS_SLN_ROOT "${CMAKE_CURRENT_SOURCE_DIR}")
 set(DEPS_ROOT "${DEPS_SLN_ROOT}/deps")
