@@ -1,1 +1,0 @@
-cmake.exe -A %CMAKE_PLATFORM% deps\%1 %CMAKE_DEFINES% --build
