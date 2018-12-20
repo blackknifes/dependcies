@@ -35,3 +35,6 @@
 /build
 /bin
 /build64
+/temp
+/deps/zlib
+/deps/json
