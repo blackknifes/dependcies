@@ -1,3 +1,9 @@
+project(libiconv C)
+set(LIBICONV_URL "https://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.15.tar.gz")
+set(LIBICONV_VERSION "1.15")
+
+DownloadLibraryTarGZip("libiconv" ${LIBICONV_URL} "libiconv-${LIBICONV_VERSION}")
+
 add_library(libiconv STATIC 
     ${LIBICONV_ROOT}/lib/iconv.c
     ${LIBICONV_ROOT}/libcharset/lib/localcharset.c
@@ -9,6 +15,8 @@ target_include_directories(libiconv PUBLIC
     ${LIBICONV_ROOT}/libcharset/include
     ${TEMP_PATH}/iconv
     )
+
+target_compile_definitions(libiconv PUBLIC -DLIBDIR)
 
 set(EILSEQ 42)
 set(USE_MBSTATE_T "USE_MBSTATE_T")
@@ -36,3 +44,16 @@ set(HAVE_ICONV)
 
 configure_file(${LIBICONV_ROOT}/libcharset/include/libcharset.h.in ${TEMP_PATH}/iconv/libcharset.h @ONLY)
 configure_file(${LIBICONV_ROOT}/libcharset/include/localcharset.h.in ${TEMP_PATH}/iconv/localcharset.h @ONLY)
+
+
+install(TARGETS ${PROJECT_NAME}
+PUBLIC_HEADER DESTINATION include
+RUNTIME DESTINATION bin
+LIBRARY DESTINATION lib
+ARCHIVE DESTINATION lib)
+
+install(FILES 
+    ${TEMP_PATH}/iconv/iconv.h
+    ${TEMP_PATH}/iconv/libcharset.h
+    ${TEMP_PATH}/iconv/localcharset.h
+    DESTINATION "${CMAKE_INSTALL_PREFIX}/include")

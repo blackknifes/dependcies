@@ -38,6 +38,7 @@
 /temp
 /deps/zlib
 /deps/json
+/deps/libiconv
 /cmakebuild
 /cmakebuild64
 /out

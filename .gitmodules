@@ -10,6 +10,3 @@
 [submodule "deps/mbedtls"]
 	path = deps/mbedtls
 	url = https://github.com/ARMmbed/mbedtls.git
-[submodule "deps/libiconv"]
-	path = deps/libiconv
-	url = https://git.savannah.gnu.org/git/libiconv.git
