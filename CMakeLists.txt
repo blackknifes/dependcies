@@ -3,6 +3,8 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 include("functions")
 
+set(CMAKE_STATIC_LINKER_FLAGS "${CMAKE_STATIC_LINKER_FLAGS} /NODEFAULTLIB")
+
 set(ZLIB_URL "http://www.zlib.net/zlib1211.zip")
 set(ZLIB_VERSION "1.2.11")
 set(JSON_URL "https://raw.githubusercontent.com/nlohmann/json/master/single_include/nlohmann/json.hpp")
