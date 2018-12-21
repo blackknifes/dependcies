@@ -15,10 +15,10 @@ pushd build64
 cmake -G "Visual Studio 15 2017 Win64" --build ..
 popd
 
-devenv /BUILD Release "build/*.sln"
-devenv /BUILD Release "build64/*.sln"
+devenv /BUILD Release "build/LibDepdependcies.sln"
+devenv /BUILD Release "build64/LibDepdependcies.sln"
 
-devenv /BUILD Release /Project "INSTALL" "build/*.sln"
-devenv /BUILD Release /Project "INSTALL" "build64/*.sln"
+devenv /BUILD Release /Project "INSTALL" "build/LibDepdependcies.sln"
+devenv /BUILD Release /Project "INSTALL" "build64/LibDepdependcies.sln"
 
 @echo on

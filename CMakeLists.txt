@@ -40,9 +40,6 @@ set(CARES_INSTALL ON CACHE BOOL "...")
 set(CARES_BUILD_TOOLS OFF CACHE BOOL "...")
 set(CARES_MSVC_STATIC_RUNTIME ON CACHE BOOL "...")
 
-CheckRuntime()
-SupportMultiThreadBuild()
-
 add_subdirectory("deps/zlib")
 include("zlib")
 include("stb")
@@ -50,3 +47,8 @@ include("base64")
 add_subdirectory("deps/c-ares")
 add_subdirectory("deps/mbedtls")
 add_dependencies("mbedtls" "zlib")
+
+project(LibDepdependcies)
+
+CheckRuntime()
+SupportMultiThreadBuild()
