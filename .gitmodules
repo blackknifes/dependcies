@@ -7,3 +7,6 @@
 [submodule "deps/base64"]
 	path = deps/base64
 	url = https://github.com/aklomp/base64.git
+[submodule "deps/mbedtls"]
+	path = deps/mbedtls
+	url = https://github.com/ARMmbed/mbedtls.git
