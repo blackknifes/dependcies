@@ -1,7 +1,8 @@
 project (stb C)
-add_library(stb STATIC "${STB_ROOT}/stb.c")
+add_library(stb STATIC "${DEPS_SLN_ROOT}/temp/stb.c")
+target_include_directories(stb PUBLIC ${STB_ROOT})
 
-file(WRITE "${STB_ROOT}/stb.c" 
+file(WRITE "${DEPS_SLN_ROOT}/temp/stb.c"
         "#include \"stb_image.h\"\n#include \"stb_image_resize.h\"\n#include \"stb_image_write.h\"\n")
 option (STB_IMPLEMENTATION "stb base module" on)
 option (STB_IMAGE_IMPLEMENTATION "stb image module" on)
