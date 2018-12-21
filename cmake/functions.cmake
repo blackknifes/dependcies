@@ -3,10 +3,9 @@ set(UNZIP_EXE "${CMAKE_CURRENT_SOURCE_DIR}/tool/unzip.exe")
 
 function (DownloadLibraryZip name url internelName)
     file(GLOB CheckExists "${TEMP_PATH}/${internelName}.zip")
-    if(!CheckExists)
+    if(NOT CheckExists)
         message(STATUS "download ${internelName} from ${url} .......")
-        file(DOWNLOAD ${url} "${TEMP_PATH}/${internelName}.zip" INACTIVITY_TIMEOUT 5 TIMEOUT 30 TLS_VERIFY OFF SHOW_PROGRESS )
-        return()
+        file(DOWNLOAD ${url} "${TEMP_PATH}/${internelName}.zip" INACTIVITY_TIMEOUT 5 TIMEOUT 30 TLS_VERIFY OFF SHOW_PROGRESS)
     endif()
     set(CheckExists)
 
