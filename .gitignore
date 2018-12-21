@@ -38,3 +38,7 @@
 /temp
 /deps/zlib
 /deps/json
+/cmakebuild
+/cmakebuild64
+/out
+/out64

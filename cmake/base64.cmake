@@ -1,4 +1,10 @@
 project(base64 C)
+add_library(base64 STATIC "${BASE64_ROOT}/lib/lib.c" "${BASE64_ROOT}/lib/codec_choose.c")
+file(TOUCH "${BASE64_ROOT}/lib/config.h")
+
+
+
+set(BASE64_INSTALL_LIB ${PROJECT_BINARY_DIR}/Release/${PROJECT_NAME}.lib)
 
 option(BASE64_HAVE_AVX "" ON)
 option(BASE64_HAVE_AVX2 "" ON)
@@ -9,21 +15,30 @@ option(BASE64_OPENMP "openmp accelerate" ON)
 
 set(BASE64_DEFINES -DBASE64_IMPLEMENTS)
 if(BASE64_HAVE_AVX)
-    list(append BASE64_DEFINES -DHAVE_AVX=1)
+    list(APPEND BASE64_DEFINES -DHAVE_AVX=1)
 endif()
 if(BASE64_HAVE_AVX2)
-    list(append BASE64_DEFINES -DHAVE_AVX2=1)
+    list(APPEND BASE64_DEFINES -DHAVE_AVX2=1)
 endif()
 if(BASE64_HAVE_SSSE3)
-    list(append BASE64_DEFINES -DHAVE_SSSE3=1)
+    list(APPEND BASE64_DEFINES -DHAVE_SSSE3=1)
 endif()
 if(BASE64_HAVE_SSSE41)
-    list(append BASE64_DEFINES -DHAVE_SSSE41=1)
+    list(APPEND BASE64_DEFINES -DHAVE_SSSE41=1)
 endif()
 if(BASE64_HAVE_SSSE42)
-    list(append BASE64_DEFINES -DHAVE_SSSE42=1)
+    list(APPEND BASE64_DEFINES -DHAVE_SSSE42=1)
+endif()
+target_compile_definitions(base64 PUBLIC ${BASE64_DEFINES})
+
+if(BASE64_OPENMP)
+    target_compile_options(base64 PUBLIC "/openmp")
 endif()
 
-add_library(base64 STATIC "${BASE64_ROOT}/lib/lib.c" "${BASE64_ROOT}/lib/codec_choose.c")
-message(${BASE64_DEFINES})
-target_compile_definitions(base64 PUBLIC ${BASE64_DEFINES})
+install(TARGETS ${PROJECT_NAME}
+PUBLIC_HEADER DESTINATION include
+RUNTIME DESTINATION bin
+LIBRARY DESTINATION lib
+ARCHIVE DESTINATION lib)
+
+install(FILES "${BASE64_ROOT}/include/libbase64.h" DESTINATION "${INSTALL_INC_PREFIX}")
