@@ -1,8 +1,9 @@
 project(libiconv C)
 set(LIBICONV_URL "https://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.15.tar.gz")
 set(LIBICONV_VERSION "1.15")
+set(LIBICONV_MD5 "ACE8B5F2DB42F7B3B3057585E80D9808")
 
-DownloadLibraryTarGZip("libiconv" ${LIBICONV_URL} "libiconv-${LIBICONV_VERSION}")
+DownloadLibraryTarGZip("libiconv" ${LIBICONV_URL} "libiconv-${LIBICONV_VERSION}" ${LIBICONV_MD5})
 
 add_library(libiconv STATIC 
     ${LIBICONV_ROOT}/lib/iconv.c
@@ -44,7 +45,6 @@ set(HAVE_ICONV)
 
 configure_file(${LIBICONV_ROOT}/libcharset/include/libcharset.h.in ${TEMP_PATH}/iconv/libcharset.h @ONLY)
 configure_file(${LIBICONV_ROOT}/libcharset/include/localcharset.h.in ${TEMP_PATH}/iconv/localcharset.h @ONLY)
-
 
 install(TARGETS ${PROJECT_NAME}
 PUBLIC_HEADER DESTINATION include
