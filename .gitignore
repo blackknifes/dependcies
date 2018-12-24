@@ -41,5 +41,5 @@
 /deps/libiconv
 /cmakebuild
 /cmakebuild64
-/out
-/out64
+/outx86
+/outx64
